@@ -17,7 +17,7 @@
     State #2 or the High temperature state, is when the temperature reaches 30°C, you will get an alert on the screen telling you that temperature level is high and the LED light will start to blink.
 
 
-    State #3 or the Critical High temperature state, is when the temperature reaches 40°C, you will get an alert on the screen telling you that temperature level is critical high and the LED light will start to blink.
+    State #3 or the Critical High temperature state, is when the temperature reaches 35°C, you will get an alert on the screen telling you that temperature level is critical high and the LED light will start to blink.
 
 
     State #4 or the Low tempertature state, is when the temperature reaches 20°C, you will get an alert on the screen telling you that temperature level is low and the LED light will start to blink.
@@ -52,7 +52,7 @@ void setup() {
   lcd.begin(16, 2);
 
   lcd.setRGB(colorR, colorG, colorB);
- digitalWrite(2, HIGH);
+  digitalWrite(2, HIGH);
 
   //Prints a message to the display
   lcd.print("Initialzing..");
@@ -83,24 +83,11 @@ void loop() {
   delay(1000);
 
 
-  if (temperature > 40) {
-    //When temp reaches 40 or above the following alert sequens will happen
-    digitalWrite(2, HIGH);
-    delay(40);
-    digitalWrite(2, LOW);
-    delay(40);
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("Temp Alert!");
-    lcd.setCursor(0, 1);
-    lcd.print("Temp Level Critical!");
-    delay(1000);
-  }
 
-  else if (temperature > 30) {
-    //When temp reaches 30 or above the following alert sequens will happen
+  if (temperature > 30 && temperature < 35) {
+    //When temp reaches 30 or above,but greater than 35. the following alert sequens will happen
     digitalWrite(2, HIGH);
-    delay(150);
+    delay(800);
     digitalWrite(2, LOW);
     delay(50);
     lcd.clear();
@@ -110,9 +97,24 @@ void loop() {
     lcd.print("Temp Level High!");
     delay(1000);
   }
+  if (temperature > 35) {
+    //When temp reaches 35 or above the following alert sequens will happen
+    digitalWrite(2, HIGH);
+    delay(1000);
+    digitalWrite(2, LOW);
+    delay(40);
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Temp Alert!");
+    lcd.setCursor(0, 1);
+    lcd.print("Temp Level Critical!");
+    lcd.scrollDisplayLeft();
+    delay(1000);
+    delay(2000);
+  }
 
-  if (temperature < 20) {
-    //When temp reaches 20 or below the following alert sequens will happen
+  if (temperature < 20 && temperature > 15) {
+    //When temp reaches 20 or below, but greater than 15. the following alert sequens will happen
     /*Servo1.write(5);
       delay(500);
       Servo1.write(45);
@@ -133,14 +135,14 @@ void loop() {
     delay(1000);
   }
 
-  else if (temperature < 15) {
+  if (temperature < 15) {
     //When temp reaches 15 or below the following alert sequens will happen
     /*Servo1.write(45);
       delay(500);
       Servo1.write(180);
       delay(500);*/
     digitalWrite(2, HIGH);
-    delay(40);
+    delay(1000);
     digitalWrite(2, LOW);
     delay(40);
     lcd.clear();
@@ -148,7 +150,9 @@ void loop() {
     lcd.print("Temp Warning!!");
     lcd.setCursor(0, 1);
     lcd.print("Temp Level Critical!!");
+    lcd.scrollDisplayLeft();
     delay(1000);
+    delay(2000);
   }
 
 }
