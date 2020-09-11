@@ -52,6 +52,7 @@ void setup() {
   lcd.begin(16, 2);
 
   lcd.setRGB(colorR, colorG, colorB);
+ digitalWrite(2, HIGH);
 
   //Prints a message to the display
   lcd.print("Initialzing..");
