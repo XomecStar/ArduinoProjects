@@ -1,3 +1,17 @@
+/*
+Project created by XomecStar
+   2020 Copyright (c) XomecStar. All rights reserved.
+   
+   Author:XomecStar
+   2020-12-12
+   
+   This is a mini weather station! It checks current humidity level temperature(Celcius and Fahreinheit) and current light exposour using a Light sensor.
+   
+   NOTE!! This program is used with a OLED 0.96" Display! If you wish to use a larger OLED display, then you must modify the code! 
+   Also if you wish to use a LCD display instead of the OLED display, you must modify the code to work!!
+
+This project can be used for your own use and can be modified the way you want! 
+*/
 #include "DHT.h"
 #define DHT11Pin 2
 #define DHTType DHT11
@@ -189,3 +203,6 @@ void oledDisplay(int size, int x, int y, float value, String unit) {
   }
 
 }
+/******************************************************************************************************************************************
+        END OF FILE
+ ******************************************************************************************************************************************/
