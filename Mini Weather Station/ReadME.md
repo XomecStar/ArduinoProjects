@@ -7,7 +7,7 @@ The program uses a Temperature and Humidity sensor and light sensor.
 You will need a few things:
 - Arduino Uno
 - Sensor Kit
-- Baseplate (comes with the senor kit)
+- Baseplate (comes with the sensor kit)
 
 ##### **ATTENTION** If You dont have the sensor kit you will need the following:
 - LED
